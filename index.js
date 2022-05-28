@@ -5,9 +5,36 @@ const continue_btn = document.querySelector(".restart")
 const quiz_box = document.querySelector(".quiz_box");
 const option_list = document.querySelector(".option_list");
 const timerCount = document.querySelector(".timer_sec");
+const timeline = gsap.timeline();
+
+timeline.to(".animate", {
+    delay:3,
+    duration:.5,
+    opacity:0
+});
+
+timeline.to(".animation",{
+    delay:1,
+    duration:1,
+    y:"100%",
+    ease: "power4.out"
+});
+
+timeline.to(".animation", {
+    zIndex: -1
+});
 
 start_btn.addEventListener("click", ()=>{
     info_box.classList.add("active");
+});
+
+timeline.from(".hero", {
+   delay: .5,
+   duration: .5,
+   skewY: 10,
+   y: 100,
+   x: -199,
+   opacity:0 
 });
 
 
@@ -29,8 +56,14 @@ continue_btn.addEventListener("click" , ()=>{
 let que_count = 0;
 let que_numb = 1;
 let counter;
+let userScore = 0;
 const next_btn = quiz_box.querySelector(".next_btn");
-const result_box = document.querySelector("._result_box");
+const result_box = document.querySelector(".result_box");
+const quit_btn = result_box.querySelector(".quit") ;
+
+quit_btn.addEventListener("click", ()=>{
+    window.location.reload();
+});
 
 next_btn.addEventListener("click" , ()=>{
     if(que_count < questions.length - 1){
@@ -73,11 +106,13 @@ function optionSelected(answer){
     let userAns = answer.textContent;
     let correctAns = questions[que_count].answer;
     let allOptions = option_list.children.length;
+    
 
     if (userAns == correctAns){
         answer.classList.add("correct")
         answer.insertAdjacentHTML("beforeend", iconTick)
-        console.log("answer is correct")
+        userScore += 1;
+        console.log(userScore)
     }
     else{
         answer.classList.add("wrong")
@@ -104,6 +139,9 @@ function showResult(){
     info_box.classList.remove("active")
     quiz_box.classList.remove("active");
     result_box.classList.add("active");
+    const scoreText = result_box.querySelector(".score_text");
+    let scoreTag = ` <span> You got only  <p> ${userScore} </p> out of <p>${questions.length} questions</p></span>`;
+    scoreText.innerHTML = scoreTag;
 }
 
 
@@ -119,6 +157,21 @@ function countdownTimer(time){
         if(time<0){
             clearInterval(counter);
             timerCount.textContent = "0";
+
+            let correctAns = questions[que_count].answer;
+            let allOptions = option_list.children.length;
+
+
+            for (let i = 0; i < allOptions; i++) {
+                if (option_list.children[i].textContent == correctAns) {
+                    option_list.children[i].setAttribute("class", "option correct")
+                    option_list.children[i].insertAdjacentHTML("beforeend", iconTick)
+                }
+            }
+            for (let i = 0; i < allOptions; i++) {
+                option_list.children[i].classList.add("disabled");
+            }
+            next_btn.style.display = "block";
             
         }
     }
