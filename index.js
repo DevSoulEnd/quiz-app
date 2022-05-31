@@ -1,11 +1,17 @@
 const start_btn = document.querySelector(".start_btn");
+const input_box = document.querySelector(".input_box");
+const input_field = input_box.querySelector(".input_field");
+const enterBtn = input_box.querySelector(".enter");
 const info_box = document.querySelector(".info_box");
 const exit_btn = info_box.querySelector(".quit")
 const continue_btn = document.querySelector(".restart")
 const quiz_box = document.querySelector(".quiz_box");
 const option_list = document.querySelector(".option_list");
 const timerCount = document.querySelector(".timer_sec");
+let username;
+
 const timeline = gsap.timeline();
+
 
 timeline.to(".animate", {
     delay:3,
@@ -24,9 +30,6 @@ timeline.to(".animation", {
     zIndex: -1
 });
 
-start_btn.addEventListener("click", ()=>{
-    info_box.classList.add("active");
-});
 
 timeline.from(".hero", {
    delay: .5,
@@ -35,6 +38,18 @@ timeline.from(".hero", {
    y: 100,
    x: -199,
    opacity:0 
+});
+
+
+start_btn.addEventListener("click", ()=>{
+    input_box.classList.add("active");
+});
+
+enterBtn.addEventListener("click" , ()=>{
+    input_box.classList.remove("active");
+    info_box.classList.add("active");
+    username = input_field.value;
+    console.log(username);
 });
 
 
@@ -48,7 +63,6 @@ continue_btn.addEventListener("click" , ()=>{
     loadQuestions(0);
     footerCount(1);
     countdownTimer(20);
-    next_btn.style.display = "none";
 });
 
 
@@ -62,7 +76,9 @@ const result_box = document.querySelector(".result_box");
 const quit_btn = result_box.querySelector(".quit") ;
 
 quit_btn.addEventListener("click", ()=>{
-    window.location.reload();
+    info_box.classList.remove("active")
+    quiz_box.classList.remove("active");
+    result_box.classList.remove("active");
 });
 
 next_btn.addEventListener("click" , ()=>{
@@ -77,6 +93,8 @@ next_btn.addEventListener("click" , ()=>{
     }
     else{
         console.log("questions are finished")
+        username = input_field.value;
+        console.log(username);
         showResult();
     }
 });
@@ -139,7 +157,11 @@ function showResult(){
     info_box.classList.remove("active")
     quiz_box.classList.remove("active");
     result_box.classList.add("active");
+    username = input_field.value;
     const scoreText = result_box.querySelector(".score_text");
+    const resultText = result_box.querySelector(".result_text");
+    let resultTag = `<h3>Hey ${username} !</h3>`;
+    resultText.innerHTML = resultTag;
     let scoreTag = ` <span> You got only  <p> ${userScore} </p> out of <p>${questions.length} questions</p></span>`;
     scoreText.innerHTML = scoreTag;
 }

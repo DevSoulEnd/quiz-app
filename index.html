@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="./fontawesome/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 </head>
+
 <body>
 
     <div class="animation">
@@ -19,56 +21,69 @@
         <h1 class="animate">Loading<span>Loading</span>Loading<span>Loading</span></h1>
         <h1 class="animate">Loading<span>Loading</span>Loading<span>Loading</span></h1>
     </div>
-   <div class="hero">
+    <div class="hero">
 
-    <div class="start_btn">
-        <button>Start Quiz</button>
-    </div>
-
-    <div class="video-container">
-        <div class="overlay"></div>
-        <video autoplay loop muted>
-            <source src="./images/video.mp4" type="video/mp4">
-        </video>
-    </div>
-    
-    <div class="info_box">
-        <div class="info_title">
-            <span>
-                Rules of this Quiz
-            </span>
-        </div>
-        <div class="info_list">
-            <div class="info"> 1. You will only have <span>20 seconds</span> per question.</div>
-            <div class="info"> 2. Once you select your answer, you cant reselect.</div>
-            <div class="info"> 3. You can't select any option once time goes off.</div>
-            <div class="info"> 4. You can't exit the quiz while playing.</div>
-            <div class="info"> 5. You'll get points on the basis of your current answers.</div>
+        <div class="start_btn">
+            <button>Start Quiz</button>
         </div>
 
-        <div class="buttons">
-            <button class="quit">Exit Quiz</button>
-            <button class="restart">Continue</button>
-        </div>
-    </div>
-
-    <div class="quiz_box">
-        <header>
-            <div class="title">
-             Quiz
+        <div class="input_box">
+            <div class="input_title">
+                <h1>Welcome</h1>
+                <h1>Please Enter Your Name</h1>
             </div>
-            <div class="timer">
-                <div class="timer_sec">
-                    20
+            <input type="text" class="input_field" required>
+            <button class="enter">Enter</button>
+        </div>
+
+
+        <div class="video-container">
+            <div class="overlay"></div>
+            <video autoplay loop muted playinline>
+                <source src="./images/video.mp4" type="video/mp4">
+            </video>
+        </div>
+
+
+        <div class="info_box">
+            <div class="info_title">
+                <span>
+                    Rules of this Quiz
+                </span>
+            </div>
+            <div class="info_list">
+                <div class="info"> 1. You will only have <span>20 seconds</span> per question.</div>
+                <div class="info"> 2. Once you select your answer, you cant reselect.</div>
+                <div class="info"> 3. You can't select any option once time goes off.</div>
+                <div class="info"> 4. You can't exit the quiz while playing.</div>
+                <div class="info"> 5. You'll get points on the basis of your current answers.</div>
+            </div>
+
+            <div class="buttons">
+                <button class="quit">Exit Quiz</button>
+                <button class="restart">Continue</button>
+            </div>
+        </div>
+
+
+
+        <div class="quiz_box">
+            <header>
+                <div class="title">
+                    Quiz
                 </div>
-            </div>
-        </header>
-        <section>
-            <div class="que_text">
-                <!-- <span>What does Html Stand For?</span> -->
-            </div>
-            <div class="option_list">
-                 <!-- <div class="option">
+                <div class="timer">
+                    <div class="timer_sec">
+                        20
+                    </div>
+                </div>
+            </header>
+            <section>
+                <div class="que_text">
+                    <!-- <span>What does Html Stand For?</span> -->
+                </div>
+                <div class="option_list">
+                    <!-- <div class="option">
                     <span>
                         Hyper Text Preprocessor
                     </span>
@@ -94,40 +109,48 @@
                         Hyper Text Multi Language
                     </span>
                 </div> -->
-            </div>
-        </section>
-        <footer>
-            <div class="total_que">
-                <!-- <span><p>2</p> of <p>5</p> Questions</span> -->
-            </div>
-            <button class="next_btn"> Next</button>
-        </footer>
-    </div>
-
-    <div class="result_box">
-
-        <div class="icon">
-            <i class="fas fa-crown"></i>
+                </div>
+            </section>
+            <footer>
+                <div class="total_que">
+                    <!-- <span><p>2</p> of <p>5</p> Questions</span> -->
+                </div>
+                <button class="next_btn"> Next</button>
+            </footer>
         </div>
-        <div class="complete_text">
-            You've completed the Quiz!
-        </div>
-        <div class="score_text">
-            <span>
+
+        <div class="result_box">
+
+            <div class="icon">
+                <i class="fas fa-crown"></i>
+            </div>
+            <div class="result_text">
+                <!-- <h3>
+                    Hey !
+                </h3> -->
+            </div>
+            <div class="complete_text">
+                <span>
+                    You've completed the Quiz!
+                </span>
+            </div>
+            <div class="score_text">
+                <!-- <span>
                 You got only <p>2</p> out of <p>5</p>
-            </span>
-        </div>
+            </span> -->
+            </div>
 
-        <div class="buttons">
-            <button class="quit">
-                Quit Quiz
-            </button>
-        </div>
+            <div class="buttons">
+                <button class="quit">
+                    Quit Quiz
+                </button>
+            </div>
 
+        </div>
     </div>
-</div>
 
     <script src="index.js"></script>
     <script src="questions.js"></script>
 </body>
+
 </html>
